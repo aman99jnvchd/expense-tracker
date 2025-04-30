@@ -1,0 +1,12 @@
+services:
+  frontend:
+    build:
+      dockerfile: Dockerfile.dev  # Use the dev Dockerfile
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules  # Prevents host from overwriting container's node_modules
+    command: npm run dev
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    ports: !override
+      - "3000:5173"
