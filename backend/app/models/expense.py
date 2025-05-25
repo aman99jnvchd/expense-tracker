@@ -11,7 +11,6 @@ class Expense(Base):
     amount = Column(Float, nullable=False)
     category = Column(String, index=True)
     description = Column(String, nullable=True)
-    # date = Column(DateTime(timezone=True), default=datetime.now(timezone.utc), onupdate=datetime.now(timezone.utc), nullable=False)
     date = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now(), nullable=False)
 
     user_id = Column(Integer, ForeignKey("users.id"))
